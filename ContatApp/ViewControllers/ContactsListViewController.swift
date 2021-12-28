@@ -5,6 +5,8 @@
 //  Created by Roman Zhukov on 28.12.2021.
 //
 
+//  Убрать выделение при нажатии
+
 import UIKit
 
 class ContactsListViewController: UITableViewController {

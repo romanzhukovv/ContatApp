@@ -122,7 +122,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JdI-mh-OEH">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="U4e-7c-fj1" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="U4e-7c-fj1" customClass="TabBarController" customModule="ContatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qOl-ph-Gui">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
