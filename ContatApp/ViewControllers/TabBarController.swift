@@ -8,22 +8,29 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    let uniquePersons = Person.getUniquePersons(persons: 10)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        transitionData()
     }
+}
+
+extension TabBarController {
+    private func transitionData() {
+        guard let viewControllers = self.viewControllers else { return }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        for viewController in viewControllers {
+            if let personsNavigatinonVC = viewController as? UINavigationController {
+                if let personsListVC = personsNavigatinonVC.topViewController as? PersonsListViewController {
+                    personsListVC.uniquePersons = uniquePersons
+                }
+            } else if let contactsNavigationVC = viewController as? UINavigationController {
+                if let contactsListVC = contactsNavigationVC.topViewController as? ContactsListViewController {
+                    contactsListVC.uniquePersons = uniquePersons
+                }
+            }
+        }
     }
-    */
-
 }

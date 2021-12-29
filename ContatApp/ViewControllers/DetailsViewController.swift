@@ -8,12 +8,17 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    @IBOutlet var phoneLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    
+    var person: Person!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        title = person.fullName
+        phoneLabel.text?.append(" \(person.phone)")
+        emailLabel.text?.append(" \(person.email)")
     }
-
-
 }
 

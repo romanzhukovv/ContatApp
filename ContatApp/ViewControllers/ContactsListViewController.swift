@@ -11,6 +11,8 @@ import UIKit
 
 class ContactsListViewController: UITableViewController {
 
+    var uniquePersons: [Person]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +38,7 @@ class ContactsListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
-        cell.textLabel?.text = "fsdfsdf"
+        cell.textLabel?.text = "hjkhjk"
         return cell
     }
     

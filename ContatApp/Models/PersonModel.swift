@@ -22,34 +22,34 @@ extension Person: Equatable {
         lhs.name == rhs.name || lhs.surname == rhs.surname || lhs.email == rhs.email || lhs.phone == rhs.phone
     }
     
-    static func getUniqPersons(persons: Int) -> [Person] {
+    static func getUniquePersons(persons: Int) -> [Person] {
         let names = DataManager.shared.names
         let surnames = DataManager.shared.surnames
         let emails = DataManager.shared.emails
         let phones = DataManager.shared.phones
         
-        var uniqPersons: [Person] = []
+        var uniquePersons: [Person] = []
         
-        while uniqPersons.count < persons {
-            var nonUniqPersons = false
+        while uniquePersons.count < persons {
+            var nonUniquePersons = false
             
             let currentPerson = Person(name: names.randomElement() ?? "",
                                        surname: surnames.randomElement() ?? "",
                                        email: emails.randomElement() ?? "",
                                        phone: phones.randomElement() ?? "")
 
-            for person in uniqPersons {
+            for person in uniquePersons {
                 if person == currentPerson {
-                    nonUniqPersons = true
+                    nonUniquePersons = true
                 }
             }
             
-            if nonUniqPersons == true {
+            if nonUniquePersons == true {
                 continue
             }
 
-            uniqPersons.append(currentPerson)
+            uniquePersons.append(currentPerson)
         }
-        return uniqPersons
+        return uniquePersons
     }
 }
