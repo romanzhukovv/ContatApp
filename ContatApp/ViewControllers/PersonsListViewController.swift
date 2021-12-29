@@ -19,13 +19,10 @@ class PersonsListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         uniquePersons.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
         
@@ -39,11 +36,8 @@ class PersonsListViewController: UITableViewController {
         return cell
     }
     
-
-    
     // MARK: - Navigation
 
-  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? DetailsViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -52,6 +46,4 @@ class PersonsListViewController: UITableViewController {
         
         detailsVC.person = person
     }
-
-
 }

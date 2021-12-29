@@ -22,12 +22,10 @@ extension TabBarController {
         guard let viewControllers = self.viewControllers else { return }
     
         for viewController in viewControllers {
-            if let personsNavigatinonVC = viewController as? UINavigationController {
-                if let personsListVC = personsNavigatinonVC.topViewController as? PersonsListViewController {
+            if let navigatinonVC = viewController as? UINavigationController {
+                if let personsListVC = navigatinonVC.topViewController as? PersonsListViewController {
                     personsListVC.uniquePersons = uniquePersons
-                }
-            } else if let contactsNavigationVC = viewController as? UINavigationController {
-                if let contactsListVC = contactsNavigationVC.topViewController as? ContactsListViewController {
+                } else if let contactsListVC = navigatinonVC.topViewController as? ContactsListViewController {
                     contactsListVC.uniquePersons = uniquePersons
                 }
             }
