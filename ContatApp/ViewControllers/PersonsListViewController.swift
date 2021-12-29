@@ -12,6 +12,7 @@ class PersonsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let uniqPersons = Person.getUniqPersons(persons: 10)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

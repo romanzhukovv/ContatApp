@@ -15,34 +15,41 @@ struct Person {
     
     var email: String
     var phone: String
-    
-    static func getPersons() -> [Person] {
-        [
-            Person(name: DataManager.shared.names.randomElement() ?? "",
-                   surname: DataManager.shared.surnames.randomElement() ?? "",
-                   email: DataManager.shared.emails.randomElement() ?? "",
-                   phone: DataManager.shared.phones.randomElement() ?? "")
-        ]
-    }
 }
 
-extension Person {
-    private func getRandomPersons(persons: Int) -> [Person] {
+extension Person: Equatable {
+    static func ==(lhs: Person, rhs: Person) -> Bool {
+        lhs.name == rhs.name || lhs.surname == rhs.surname || lhs.email == rhs.email || lhs.phone == rhs.phone
+    }
+    
+    static func getUniqPersons(persons: Int) -> [Person] {
+        let names = DataManager.shared.names
+        let surnames = DataManager.shared.surnames
+        let emails = DataManager.shared.emails
+        let phones = DataManager.shared.phones
         
-        var names = DataManager.shared.names.shuffled()
-        var surnames = DataManager.shared.surnames.shuffled()
-        var emails = DataManager.shared.emails.shuffled()
-        var phones = DataManager.shared.phones.shuffled()
+        var uniqPersons: [Person] = []
         
-        var currentPerson = Person(name: "", surname: "", email: "", phone: "")
-        var randomPersons: [Person] = []
-        
-        for person in (1...persons) {
-            for name in names {
-                currentPerson.name = name
+        while uniqPersons.count < persons {
+            var nonUniqPersons = false
+            
+            let currentPerson = Person(name: names.randomElement() ?? "",
+                                       surname: surnames.randomElement() ?? "",
+                                       email: emails.randomElement() ?? "",
+                                       phone: phones.randomElement() ?? "")
+
+            for person in uniqPersons {
+                if person == currentPerson {
+                    nonUniqPersons = true
+                }
             }
+            
+            if nonUniqPersons == true {
+                continue
+            }
+
+            uniqPersons.append(currentPerson)
         }
-        
-        return randomPersons
+        return uniqPersons
     }
 }
